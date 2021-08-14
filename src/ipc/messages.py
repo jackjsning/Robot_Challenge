@@ -43,6 +43,15 @@ class JoystickDeflection(core.Message):
     joystick: JoystickType
     deflection: pydantic.confloat(ge=-1.0, le=1.0)  # type: ignore[valid-type]
 
+class Direction(enum.Enum):
+    # Robot movement
+    LEFT = "left"
+    RIGHT = "right"
+    FORWARD = "forward"
+    BACKWARD = "backward"
+
+class UserInput(core.Message):
+    direction: Direction
 
 ########################################################################################
 # PROCESSED SENSOR DATA ################################################################
@@ -51,7 +60,9 @@ class JoystickDeflection(core.Message):
 
 class Odometry(core.Message):
     # TODO: Fill this out, of course
-    position: float
+    x_position: float
+    y_position: float
+    heading: str
 
 
 ########################################################################################

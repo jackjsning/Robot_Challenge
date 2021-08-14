@@ -76,7 +76,11 @@ class TopicSpecs(Registry):
         channel="debug",
         msg_cls=messages.Debug,
     )
-
+    USER_INPUT = core.TopicSpec(
+        broker_spec=BrokerSpecs.GENERAL,
+        channel="user_input",
+        msg_cls=messages.UserInput,
+    )
 
 class RPCSpecs(Registry):
     DEBUG = core.RPCSpec(BrokerSpecs.GENERAL, "debug", messages.DebugRequest)
